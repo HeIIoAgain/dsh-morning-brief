@@ -17,13 +17,19 @@ concurrency:
 
 jobs:
   self-check:
-    name: Python ${{ matrix.python }}
-    runs-on: ubuntu-latest
+    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.9", "3.12"]
+        include:
+          # ubuntu-latest 现在指向 26.04，而 actions/setup-python 没有为 26.04
+          # 提供 3.9 的构建（manifest 里只有 22.04 / 24.04），所以 3.9 那格必须钉 24.04。
+          - os: ubuntu-24.04
+            python: "3.9"
+          - os: ubuntu-latest
+            python: "3.12"
     env:
       PYTHONUTF8: "1"
     steps:
