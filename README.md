@@ -4,6 +4,7 @@
 >
 > A reusable agent skill for a daily semiconductor-industry morning brief — product/technology news → A-share impact → Word + email.
 
+[![CI](https://github.com/HeIIoAgain/dsh-morning-brief/actions/workflows/ci.yml/badge.svg)](https://github.com/HeIIoAgain/dsh-morning-brief/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Skill](https://img.shields.io/badge/format-SKILL.md-6f42c1.svg)

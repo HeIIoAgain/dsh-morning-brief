@@ -2,6 +2,7 @@
 
 > A reusable agent skill for a **daily semiconductor-industry morning brief**: it turns overnight product/technology news into an A-share / HK-stock impact report, renders a Word (`.docx`) deep-dive and delivers both by email.
 
+[![CI](https://github.com/HeIIoAgain/dsh-morning-brief/actions/workflows/ci.yml/badge.svg)](https://github.com/HeIIoAgain/dsh-morning-brief/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 
