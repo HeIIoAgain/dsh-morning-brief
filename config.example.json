@@ -1,0 +1,22 @@
+{
+  "recipient": "you@example.com",
+  "subject": "半导体晨报 · {date}",
+  "docx_basename": "半导体晨报",
+  "report_dir": "~/.local/share/morning-brief/reports",
+  "timezone": "Asia/Shanghai",
+  "window_start": "05:00",
+  "handbook": "references/handbook.md",
+  "watchlist": "references/watchlist.md",
+  "template": "references/report-template.md",
+  "delivery": {
+    "mode": "dsh_tool",
+    "smtp": {
+      "host": "smtp.example.com",
+      "port": 465,
+      "ssl": true,
+      "from": "you@example.com",
+      "username": "you@example.com",
+      "password_env": "MORNING_BRIEF_SMTP_PASSWORD"
+    }
+  }
+}
