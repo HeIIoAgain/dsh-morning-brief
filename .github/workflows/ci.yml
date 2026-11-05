@@ -1,9 +1,7 @@
 name: CI
 
-# 本仓库是 DSH 技能目录（Python 脚本，无第三方运行时依赖）。
-# 检查项都是确定性的，不会因为 runner 环境差异变红：
-#   1. 所有脚本能被 Python 解析（语法门禁）
-#   2. 仓库结构完整（SKILL.md / README / LICENSE 存在）
+# 兑现 README「可审计」与 CHANGELOG 里「GitHub Actions 每次提交都跑自检」的承诺。
+# 本仓库只用 Python 标准库，README 声明支持 Python 3.9+，故矩阵取 3.9 与 3.12。
 on:
   push:
     branches: [main]
@@ -18,14 +16,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  self-check:
     name: Python ${{ matrix.python }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.10", "3.12", "3.13"]
+        python: ["3.9", "3.12"]
     env:
       PYTHONUTF8: "1"
     steps:
@@ -37,15 +35,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Syntax check (compileall)
-        run: python -m compileall -q scripts
-
-      - name: Repository structure
-        run: |
-          test -f SKILL.md
-          test -f README.md
-          test -f LICENSE
-
-      - name: Validate config.example.json
-        run: |
-          python -c "import json,pathlib; json.loads(pathlib.Path('config.example.json').read_text(encoding='utf-8')); print('config.example.json OK')"
+      # 结构 / frontmatter / docx 冒烟 / 隐私扫描，全部由仓库自带脚本完成。
+      # --repo-only 表示不要求本地 config.json，正合 CI 场景。
+      - name: Self-check
+        run: python scripts/validate.py --repo-only
