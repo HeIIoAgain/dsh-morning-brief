@@ -21,7 +21,7 @@ The repo ships the **judgement rules, search templates and delivery pipeline**; 
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-name>/dsh-morning-brief.git
+git clone https://github.com/HeIIoAgain/dsh-morning-brief.git
 mkdir -p ~/.dsh/skills
 cp -R dsh-morning-brief ~/.dsh/skills/morning-brief
 cd ~/.dsh/skills/morning-brief

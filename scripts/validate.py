@@ -184,7 +184,15 @@ def check_python() -> None:
         if not path.is_file():
             continue
         if rel.endswith(".sh"):
-            result = subprocess.run(["bash", "-n", str(path)], capture_output=True, text=True)
+            try:
+                result = subprocess.run(
+                    ["bash", "-n", str(path)], capture_output=True, text=True
+                )
+            except FileNotFoundError:
+                # Windows without Git Bash: no `bash` on PATH. Skip instead of
+                # crashing the whole self-check with a traceback.
+                warn(f"{rel} syntax skipped (no bash on PATH)")
+                continue
             if result.returncode == 0:
                 ok(f"{rel} syntax")
             else:

@@ -49,7 +49,7 @@ dsh-morning-brief/
 │   ├── send_email.py             # SMTP 兜底发信（附件、SSL/STARTTLS）
 │   ├── validate.py               # 仓库 / 配置自检
 │   └── install.sh                # 安装到 ~/.dsh/skills 或项目 .dsh/skills
-├── .github/workflows/validate.yml
+├── .github/workflows/ci.yml
 ├── LICENSE
 └── README.md / README.en.md
 ```
@@ -59,7 +59,7 @@ dsh-morning-brief/
 ### 方式一：装进 DeepSeek Harness（推荐）
 
 ```bash
-git clone https://github.com/<your-name>/dsh-morning-brief.git
+git clone https://github.com/HeIIoAgain/dsh-morning-brief.git
 mkdir -p ~/.dsh/skills
 cp -R dsh-morning-brief ~/.dsh/skills/morning-brief
 
